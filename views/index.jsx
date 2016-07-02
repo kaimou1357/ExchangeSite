@@ -1,10 +1,21 @@
 import React from 'react';
 import {render} from 'react-dom';
+import Main from './components/Main.jsx'
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 
-class App extends React.Component {
-  render () {
-    return <p> Hello React!</p>;
-  }
+injectTapEventPlugin();
+
+class App extends React.Component{
+	render(){
+		return <Main />
+	}
 }
 
-render(<App/>, document.getElementById('app'));
+
+render(<MuiThemeProvider
+    		muiTheme = {getMuiTheme(lightBaseTheme)}>
+         		<Main/>
+    	</MuiThemeProvider>, document.getElementById('app'));
